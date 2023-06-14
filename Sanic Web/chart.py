@@ -49,7 +49,7 @@ with open(movie_path, 'r', encoding="UTF-8") as movie_file,\
     comment_file.close()
     emotion_file.close()
 
-
+# 饼图绘制
 def plot_movie_comment_pie():
 
     movie_name = []
@@ -74,6 +74,7 @@ def plot_movie_comment_pie():
                     negative_num += float(emotion_csv[j][negative_index])
             positives.append(positive_num)
             negatives.append(negative_num)
+                # 调用函数绘制词云
             plot_movie_comment_wordcloud(movie_csv[i][movie_id_index],movie_csv[i][movie_name_index])
             print(i)
         # close
@@ -81,9 +82,7 @@ def plot_movie_comment_pie():
         comment_file.close()
         emotion_file.close()
 
-    print(movie_name)
-    print(positives)
-    print(negatives)
+
     for item in range(0,len(movie_name)):
         print(movie_name[item])
         plt.title(movie_name[item], fontsize=30)
@@ -105,7 +104,7 @@ def plot_movie_comment_pie():
 
 
 
-# plot wordcloud
+# 绘制词云
 def plot_movie_comment_wordcloud(movie_id,movie_name):
     comment = ""
     with open(movie_path, 'r', encoding="UTF-8") as movie_file, \
@@ -139,6 +138,7 @@ def plot_movie_comment_wordcloud(movie_id,movie_name):
     plt.savefig('package/' + movie_name + 'wordcloud.png')
     plt.close()
 
+# 打包为zip文件
 def file2zip(zip_file_name):
     with zipfile.ZipFile(zip_file_name, mode='w') as zf:
         zf.write('package', compress_type=zipfile.ZIP_DEFLATED)
