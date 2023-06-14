@@ -4,13 +4,13 @@ import paddlehub
 import os
 
 if __name__ == '__main__':
-    # 还没设置
+    # 自行替换文件名
     path = "csv/20230612210443_movie_comment.csv"
     analysis_path = "csv/20230612210443_movie_comment_analysis.csv"
     if not os.path.exists(path):
         print({"code": 0, "msg": "file is not exists"})
 
-    # 评论内容列表
+    # 读取评论内容
     res = []
     with open(path, encoding='UTF-8') as file:
         c_csv = list(csv.reader(file))
